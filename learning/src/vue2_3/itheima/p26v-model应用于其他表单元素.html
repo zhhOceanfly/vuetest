@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!--
+  输入框 input value
+文本域 textarea value
+复选框 input:checkbox checked
+单选框 input:radio checked
+下拉菜单 select  value
+-->
+
+<body>
+    <div id="app">
+        <h3>小黑学习网</h3>
+        姓名:
+        <input type="text" v-model="username">
+        <br><br>
+        是否单身
+        <input type="checkbox" v-model="isSingal">
+        <br><br>
+        性别:
+        <!-- name相同互斥 -->
+        <input v-model="gender" type="radio" name="gender" value="1">男
+        <input v-model="gender" type="radio" name="gender" value="2">女
+        <br><br>
+        <!-- 所在城市:
+        1 option需要设置value值,提交给后台
+        2 select的value值,关联option的value值 -->
+        <select v-model="cityid">
+            <option value="101"> 北京</option>
+            <option value="102"> 上海</option>
+            <option value="103"> 广东</option>
+        </select>
+        自我描述
+        <textarea v-model="desc"></textarea>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                username: "",
+                isSingal: false,
+                gender: "1",
+                cityid: '102',
+                desc: ""
+            }
+        })
+    </script>
+</body>
+
+</html>

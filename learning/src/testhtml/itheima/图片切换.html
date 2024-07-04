@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div id="mask">
+    <div class="center">
+        <img src="imaArr[index]" alt="">
+        <a href="javascript:void(0)" v-show="index!=0" @click="prev" class="left">
+            <img src="./images/prev.png" alt="">
+        </a>
+        <a href="javascript:void(0)" v-show="index<imaArr.length-1" @click="next" class="right">
+            <img src="./images/next.png" alt="">
+        </a>
+    </div>
+</div>
+
+列表数据使用数组保存
+v-bind指令可以设置元素属性，比如src
+v-show和v-if都可以切换元素的显示状态，频繁切换使用v-show
+
+<body>
+    <div id="app">
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#mask",
+            data: {
+                imaArr: [],
+                index: 0
+            },
+            methods: {
+                prev: function () {
+                    this.index--;
+                },
+                next: function () {
+                    this.index++;
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>

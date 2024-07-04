@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <div id="app">
+        {{a}}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var data = { a: 1 };
+        var vm = new Vue({
+            el: "#app",
+            data: data,
+            beforeCreate() {
+                console.log("beforeCreate");
+            },
+            created() {
+                console.log("created");
+            },
+            beforeMount() {
+                console.log("beforeMount");
+            },
+            mounted() {
+                console.log("Mount");
+            },
+            beforeUpdate() {
+                console.log("beforeUpdate");
+            },
+            updated() {
+                console.log("Updated");
+            },
+            beforeDestroy() {
+                console.log("beforeDestroy");
+            },
+            Destroy() {
+                console.log("Destroy");
+            },
+        });
+
+
+
+        // $watch 是一个实例方法
+        vm.$watch('a', function (newValue, oldValue) {
+            // 这个回调将在 `vm.a` 改变后调用
+            console.log(newValue, oldValue)
+        })
+        vm.$data.a = "shiosj"
+    </script>
+
+</body>
+
+</html>

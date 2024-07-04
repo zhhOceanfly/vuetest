@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- computed属性
+作用:封装了一段对于数据的处理,求得一个结果
+语法: 写在computed配置项中, 作为属性,直接使用->this.计算属性{{计算属性}}
+计算属性会对计算出来的结果缓存,再次使用直接读取缓存,依赖项变化了,会自动计算->并再次缓存
+methods方法
+作用:给实例提供一个方法,调用以处理业务逻辑
+语法:写在methods配置项中, 作为方法,需要调用 ->this.方法名{{方法名()}} @事件名="方法名" -->
+
+
+<body>
+    <div id="app">
+        <h3>小黑的礼物清单
+            <span>{{totalcount}}</span>
+            <span>{{totalcount}}</span>
+            <span>{{totalcount}}</span>
+            <span>{{totalcount}}</span>
+            <span>{{totalcount}}</span>
+        </h3>
+        <table>
+            <tr>
+                <th>名字</th>
+                <th>数量</th>
+            </tr>
+            <tr v-for="(itme,index) in list" :key="itme.id">
+                <td>{{itme.name}}</td>
+                <td>{{itme.num}}</td>
+            </tr>
+        </table>
+        <p>礼物总数:{{totalcount}}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                list: [
+                    { id: 1, name: "篮球", num: 1 },
+                    { id: 2, name: "玩具", num: 5 },
+                    { id: 3, name: "铅笔", num: 3 },
+                ]
+            },
+            computed: {
+                totalcount() {
+                    console.log("计算属性执行了")
+                    //基于现有数据,编写求值逻辑
+                    //计算属性函数内部,可以直接通过this访问到app实例 
+                    let total = this.list.reduce((sum, item) => sum + item.num, 0)
+                    return total
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="点击" @click="doit(666,7777)">
+        <input type="text" value="" @keyup.enter="sayHi">
+    </div>
+    事件绑定的方法写成函数调用的形式，可以传入自定义参数
+    定义方法时需要定义形参来接受传入的实参
+    事件的后面跟上.修饰符可以对时间进行限制
+    .enter可以限制触发的按键为回车
+    事件修饰符有多种
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+
+            },
+            methods: {
+                doit: function (p1, p2) {
+                    console.log(p1);
+                    console.log(p2);
+                },
+                sayHi: function () {
+                    alert("吃了没");
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

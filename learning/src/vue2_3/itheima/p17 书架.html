@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <!-- key属性="唯一标识"
+            作用:给列表项添加的唯一标识.便于vue进项列表项正确排序复用 
+            注意点
+            1 key的值只能是字符串或数字类型
+            2 key的值必须具有唯一性
+            3 推荐使用id作为key唯一, 不推荐使用index作为key(会变化,不对应)
+            -->
+            <li v-for="(item,index) in booklist" :key="item.id">
+                <span>{{ item.name }}</span>
+                <span>{{ item.anthor }}</span>
+                <!-- 注册点击时间,通过id进行删除数据 -->
+                <button @click="fn(item.id)">删除</button>
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                booklist: [
+                    { id: 1, name: '《红缕梦》', anthor: "曹雪芹" },
+                    { id: 2, name: '《西游记》', anthor: "吴承恩" },
+                    { id: 3, name: '《水浒传》', anthor: "施耐庵" },
+                    { id: 4, name: '《三国演义》', anthor: "罗贯中" },
+                ],
+            },
+            methods: {
+                fn(id) {
+                    // 通过id 进行删除数据组的对应项->filter(不会改变原数组)
+                    // filter:根据条件,保留满足条件的对应项 得到一个新数组
+                    console.log(this.booklist.filter(item => item.id !== id));
+                    this.booklist = this.booklist.filter(item => item.id !== id);
+
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>

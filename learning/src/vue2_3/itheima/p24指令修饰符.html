@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 通过 "."指明一些指令后缀,不同后缀封装了不同的处理操作 简化代码
+1 按键修饰符
+@keyup.enter ->键盘回车监听
+2 v-model修饰符
+v-model.trim ->去除首尾空格
+v-model.number->转数字
+3 事件修饰符
+@事件名.stop ->阻止冒泡
+@事件名.prevent->阻止默认行为 -->
+
+<body>
+    <div id="app">
+        <h3>@keyup,enter->键盘回车监听</h3>
+        姓名:<input @keyup="fn" v-model="username" type="text">
+        年级:<input @keyup="fn" v-model="age" type="text">
+        <h3>v-model.trim v-model.number</h3>
+        姓名:<input @keyup="fn" v-model.trim="username" type="text">
+        年级:<input @keyup="fn" v-model.number="age" type="text">
+        <h3>@事件名.stop @事件名.prevent </h3>
+        <div @click="fatherFn" class="father">
+            <div @click.stop="sonFn" class="son">儿子</div>
+        </div>
+        <a @click.prevent href="http://www.baidu.con">阻止默认行为</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                list: [
+                    { id: 1, name: "跑步1公里" },
+                    { id: 2, name: "游泳100米" },
+                    { id: 3, name: "跳神200个" },
+                ],
+                username: "",
+                age: "",
+            },
+            methods: {
+                fn(e) {
+                    if (e.key == "Enter") {
+                        console.log(e)
+                        console.log("键盘回车时候出发", this.username)
+                    }
+                },
+                fatherFn() {
+                    console.log("父亲被点击")
+                },
+                sonFn(e) {
+                    // 或者使用
+                    // e.stopPropagation()
+                    console.log("儿子被点击了")
+                },
+
+                clear() {
+                    this.list = []
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

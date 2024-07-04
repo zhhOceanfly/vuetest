@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="input-num">
+            <button @click="Sub">-</button>
+            <span>{{num}}</span>
+            <button @click="Add">+</button>
+        </div>
+        <img src="http://www.itheima.com/images/logo.png" alt="">
+    </div>
+    创建vue实例时：el（挂载点）data（数据）method（方法）
+    v-on 指令的作用是绑定时间，简写为@
+    方法中通过this，关键字汇过去data中的数据
+    v-text指令的作用是设置元素的文本值，简写为{{}}
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                num: 1
+            },
+            methods: {
+                Add() {
+                    console.log("Add");
+                    if (this.num < 10) {
+                        this.num++;
+                    } else {
+                        alert("别点啦，最大啦！");
+                    }
+                },
+                Sub: function () {
+                    console.log("Sub")
+                    if (this.num > 0) {
+                        this.num--;
+                    } else {
+                        alert("别点啦，最小啦！");
+                    }
+                }
+            },
+        })
+
+    </script>
+</body>
+
+</html>

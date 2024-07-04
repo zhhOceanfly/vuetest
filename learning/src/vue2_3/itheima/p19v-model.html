@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 1 作用:给表单元素使用,双向数据绑定->可以快速获取或设置表单元素内容
+数据变化->试图自动更新
+试图变化->数据自动更新
+2 语法 v-model='变量' -->
+
+<body>
+    <div id="app">
+        <!-- v-model 可以让数据和试图,形成双向数据绑定
+        数据变化,试图自动更新
+        试图变化,数据自动更新 
+        可以快速获取或设置表单元素内容
+    -->
+        账户: <input type="text" v-model="username"><br>
+        密码: <input type="password" v-model="password">
+        <button @click="login">登录</button>
+        <button @click="reset">重置</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                username: "hello",
+                password: "",
+            },
+            methods: {
+                login() {
+                    console.log(this.username, this.password)
+                },
+                reset() {
+                    this.username = ""
+                    this.password = ""
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

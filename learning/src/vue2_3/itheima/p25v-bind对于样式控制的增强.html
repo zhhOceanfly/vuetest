@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 3px solid #000;
+            font-size: 30px;
+            margin-top: 10px;
+        }
+
+        .pink {
+            background-color: pink;
+        }
+
+        .big {
+            width: 300px;
+            height: 300px;
+        }
+
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+<!-- 操作class
+语法:class="对象/数组"
+1 对象->键就是类名,值是布尔值,如果值为true,有这个类,否则没有这个类
+<div class="box" :class="{类名1:布尔值,类名2:布尔值}"></div>
+适用场景:一个类名,来回切换
+2 数组中的所有类, 都会添加到盒子上,本职就是一个class列表
+<div class="box" :class="[类名1,类名2]"></div> 
+适用场景:批量添加或删除类
+
+
+
+核心
+1 基于数据动态渲染tab ->v-for
+2 准备下标记录高亮是哪一个tab->activeindex
+2 基于下标,动态控制class类名 v-bind:class
+
+
+v-bind对于样式增强, 操作style
+语法:style="对象"
+1 对象->键就是类名,值是布尔值,如果值为true,有这个类,否则没有这个类
+<div class="box" :style="{css属性名1,css属性名2,css属性名3}"></div>
+适用场景:一个类名,来回切换
+-->
+
+<body>
+    <div id="app">
+        <div class="box" :class="{pink:false,big:true}">黑马程序员</div>
+        <div class="box" :class="['pink','big']">黑马程序员</div>
+        <ul>
+            <li v-for="(item,index) in list" :key="item.id" @click="activeindex=index">
+                <a :class="{active:index==activeindex}" href="#">{{item.name}}</a>
+            </li>
+        </ul>
+        <div class="box" :style="{width:'400px',height:'400px','background-color':'green'}"></div>
+        <div class="box" :style="{width:'400px',height:'400px',backgroundColor:'green'}"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                activeindex: 0,
+                list: [
+                    { id: 1, name: "京东秒杀" },
+                    { id: 2, name: "每日特价" },
+                    { id: 3, name: "品类秒杀" },
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

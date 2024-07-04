@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    1 通过v-model 绑定输入框->实时获取表单元素的内容
+    2 点击按钮,进行新增,往数组最前面增加 unshift
+
+列表渲染
+v-for key的设置
+删除功能
+v-on调用传参 filter过滤,覆盖修改原数组
+添加功能
+v-model 绑定 unshift修改愿数组添加
+底部统计和清空
+数组.length累计长度
+覆盖数组清空列表
+v-show 控制隐藏
+-->
+
+<body>
+    <div id="app">
+        <header class="header">
+            <h1>小黑记事本</h1>
+            <!-- <input v-model="todoname" @keyup.enter="add" autocomplete="off" autofocus="autofocus" placeholder="请输入任务"
+                class="new-todo"> -->
+            <input v-model="todoname" placeholder="请输入任务" class="new-todo">
+            <button @click="add" class="add">添加任务</button>
+        </header>
+        <!-- 列表区域 -->
+        <section class="main">
+            <ul class="todo-list">
+                <li class="todo" v-for="(item,index) in list" :key="item.id">
+                    <div class="view">
+                        <span class="index">{{ index+1 }}.</span>
+                        <label>{{ item.name }}</label>
+                        <button class="destory" @click="del(item.id)">删除</button>
+
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <!-- 统计和清空 -->
+        <footer class="footer">
+            <span class="todo-count" v-if="list.length>0">合计:<strong>{{list.length}}</strong></span>
+            <button v-show="list.length>0" class="clear-completed" @click="clear">清空任务</button>
+        </footer>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                list: [
+                    { id: 1, name: "跑步1公里" },
+                    { id: 2, name: "游泳100米" },
+                    { id: 3, name: "跳神200个" },
+                ],
+                todoname: "",
+            },
+            methods: {
+                del(id) {
+                    //filter 保留所有不等于id的项
+                    this.list = this.list.filter(item => item.id != id)
+                },
+                add() {
+                    if (this.todoname.trim() === '') {
+                        alert("请输入任务名称")
+                    } else {
+                        this.list.unshift({
+                            id: +new Date(),
+                            name: this.todoname
+                        })
+                        this.todoname = ""
+                    }
+
+                },
+                clear() {
+                    this.list = []
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

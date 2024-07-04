@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+v-bind
+1 作用:动态的设置html的标签属性->src url title
+2 语法:v-bind:属性名="表达式"
+
+<body>
+    <div id="app">
+        <img v-bind:src="imgurl" v-bind:title="imgurl" alt="">
+        简写
+        <img :src="imgurl" :title="imgurl" alt="">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                imgurl: "./images/1458656822,207890900.webp",
+            }
+        })
+    </script>
+</body>
+
+</html>

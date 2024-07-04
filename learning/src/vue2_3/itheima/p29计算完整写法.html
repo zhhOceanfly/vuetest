@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 计算属性完整写法
+计算属性默认简写,只能读取访问,不能修改
+如果要修改->需要写计算属性的完整写法 get set 
+完整写法
+computed:{
+    计算属性名:{
+        get(){
+            return 结果
+        },
+        set(修改的值){
+
+        }
+    }
+}
+简写
+computed:{
+    计算属性名(){
+        return 结果
+    }
+}
+-->
+
+<body>
+    <div id="app">
+        姓: <input type="text" v-model="fname">
+        名: <input type="text" v-model="lname">
+        <span>{{fullname}}</span><br><br>
+        <button @click="changename">改名卡</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                fname: "刘",
+                lname: "备",
+            },
+            methods: {
+                changename() {
+                    this.fullname = this.fname + this.lname
+                },
+            },
+            computed: {
+                fullname: {
+                    // 当fullname 计算属性, 被获取求值时, 执行get(有缓存,优化读取缓存)
+                    // 会将返回值作为, 求值的结果
+                    get() {
+                        return this.fname + this.lname
+                    },
+                    // 当fullname计算属性, 被修改赋值时, 执行set
+                    // 修改的值, 传递给set方法的形参
+                    set(value) {
+                        console.log(value)
+                        this.fname = value.slice(0, 1)
+                        this.lname = value.slice(1)
+                    }
+                },
+
+            },
+        })
+
+    </script>
+</body>
+
+</html>

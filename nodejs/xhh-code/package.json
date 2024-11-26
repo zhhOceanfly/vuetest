@@ -1,0 +1,9 @@
+ 
+{
+    "name": "xhh-code",  
+    "version": "1.0.0",  
+    "main": "index.js",  
+    "description": "时间格式化", 
+    "keywords": ["xhhCode"], 
+    "license": "ISC"  
+  }

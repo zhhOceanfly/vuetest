@@ -1,5 +1,8 @@
+# README
 
 ```
 npm init -y
-npm install word-counter
+npm install zhh-counter
+node index.js
 ```
+

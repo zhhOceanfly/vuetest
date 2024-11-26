@@ -1,0 +1,16 @@
+{
+    "name": "zhh-hello-cli",
+    "version": "1.0.0",
+    "main": "index.js",
+    "description": "我的命令行",
+    "keywords": [
+        "myCli"
+    ],
+    "license": "ISC",
+    "bin": {
+        "my-cli": "./index.js"
+    },
+    "dependencies": {
+        "inquirer": "^6.5.2"
+    }
+}

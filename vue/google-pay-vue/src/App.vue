@@ -4,7 +4,7 @@
       Botão google pay
     </h1>
     <GooglePay
-      totalPrice="100.00"
+      totalPrice="1.00"
       @loaded="loaded"
       @loadedError="loadedError"
       @paymentError="paymentError"

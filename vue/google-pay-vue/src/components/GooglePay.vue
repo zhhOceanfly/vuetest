@@ -159,7 +159,7 @@ export default {
             // Alterar o environment para 'PRODUCTION' em prod
             environment: process.env.VUE_APP_GOOGLE_PAY_ENVIRONMENT,
           });
-          console.log(paymentsClient)
+          console.log('paymentsClient:', paymentsClient)
         }
         return paymentsClient;
       }
@@ -248,6 +248,7 @@ export default {
             // handle the response
             //在 Google 用户授权您的网站接收与用户所选付款方式和可选联系数据相关的信息后，处理来自 Google Pay API 的响应
             processPayment(paymentData);
+            console.log('paymentData:',paymentData)
           })
           .catch((err) => {
             // show error in developer console for debugging

@@ -19,3 +19,6 @@ If you're using nuxt or some other platform, see how to add the google script to
 3. Install the dependencies wth `yarn` or `npm i`
 4. Run `yarn serve` or `npm run serve` to run the server
 5. Open your [localhost](http://localhost:8080/)
+
+
+

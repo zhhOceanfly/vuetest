@@ -249,6 +249,25 @@ export default {
             //在 Google 用户授权您的网站接收与用户所选付款方式和可选联系数据相关的信息后，处理来自 Google Pay API 的响应
             processPayment(paymentData);
             console.log('paymentData:',paymentData)
+            /*
+            paymentData
+              {
+                  "apiVersion": 2,
+                  "apiVersionMinor": 0,
+                  "paymentMethodData": {
+                      "description": "Visa •••• 1782",
+                      "info": {
+                          "cardDetails": "1782",
+                          "cardNetwork": "VISA"
+                      },
+                      "tokenizationData": {
+                          "token": "examplePaymentMethodToken",
+                          "type": "PAYMENT_GATEWAY"
+                      },
+                      "type": "CARD"
+                  }
+              }
+            */
           })
           .catch((err) => {
             // show error in developer console for debugging

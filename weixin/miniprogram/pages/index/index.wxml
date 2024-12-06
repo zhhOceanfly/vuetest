@@ -10,6 +10,13 @@
           <text class="nickname-label">昵称</text>
           <input type="nickname" class="nickname-input" placeholder="请输入昵称" bind:change="onInputChange" />
         </view>
+        <button type="primary">页面主操作 Normal</button>
+        <!-- <textarea hold-keyboard="{{true}}">
+          <keyboard-accessory class="container" style="height: 50px;">
+            <cover-view bindtap="tap" style="flex: 1; background: green;">1</cover-view>
+            <cover-view bindtap="tap" style="flex: 1; background: red;">2</cover-view>
+          </keyboard-accessory>
+        </textarea> -->
       </block>
       <block wx:elif="{{!hasUserInfo}}">
         <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>

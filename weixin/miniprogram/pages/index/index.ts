@@ -3,6 +3,19 @@
 const app = getApp<IAppOption>()
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
 
+var common = require('../common.js')
+
+Page({
+  data: {
+    text: "This is page data."
+  },
+  onLoad: function(options) {
+    // 页面创建时执行
+    console.log(2342232)
+    common.sayHello('MINA')
+  },
+})
+
 Component({
   data: {
     motto: 'Hello World',
@@ -14,7 +27,16 @@ Component({
     canIUseGetUserProfile: wx.canIUse('getUserProfile'),
     canIUseNicknameComp: wx.canIUse('input.type.nickname'),
   },
+  created() {
+    //const appInstance = getApp()
+    console.log(23232,app.globalData) // I am global data
+  },
   methods: {
+    onLoad() {
+      // 页面创建时执行
+      console.log(32322322)
+      common.sayHello('MINA')
+    },
     // 事件处理函数
     bindViewTap() {
       wx.navigateTo({
